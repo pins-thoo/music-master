@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import { FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap';
 import { BsSearch } from 'react-icons/bs';
+import Profile from './Profile';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: ''
+      query: '',
+      artist: null
     }
   }
 
@@ -23,7 +25,11 @@ class App extends Component {
     }),
     })
     .then(response => response.json())
-    .then(json => console.log('json', json))
+    .then(json => {
+      const artist = json.artists.items[0];
+      console.log('artist', artist);
+      this.setState({artist});
+    })
     .catch(error => console.log('error', error))
   }
 
@@ -51,10 +57,9 @@ class App extends Component {
             </InputGroup.Append>
           </InputGroup>
         </FormGroup>
-        <div className="profile">
-          <div>Artist picture</div>
-          <div>Artist Name</div>
-        </div>
+        <Profile
+          artist={this.state.artist}
+        />
         <div className="Gallery">
           Gallery
         </div>
