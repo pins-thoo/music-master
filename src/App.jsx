@@ -3,6 +3,7 @@ import './App.css';
 import { FormGroup, FormControl, InputGroup, Button } from 'react-bootstrap';
 import { BsSearch } from 'react-icons/bs';
 import Profile from './Profile';
+import Gallery from './Gallery';
 
 class App extends Component {
   constructor(props) {
@@ -78,11 +79,11 @@ class App extends Component {
           ?
             <div>
               <Profile
-              artist={this.state.artist}
+                artist={this.state.artist}
               />
-              <div className="Gallery">
-                Gallery
-              </div>
+              <Gallery
+                tracks ={this.state.tracks}
+              />
             </div>
           : <div></div>
         }
