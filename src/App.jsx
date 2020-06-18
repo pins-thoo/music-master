@@ -5,6 +5,8 @@ import { BsSearch } from 'react-icons/bs';
 import Profile from './Profile';
 import Gallery from './Gallery';
 
+// BQCw22HzJlIaG_xdSKOZFRVTj-kYKqGwE_wOFvE1kyYcLPvRI50JRiwX_gS-ps156RJ4VP_1fQmoi65Ot90y7Rbwr6HV1Uo61_2a_EJgh5S6O4GQRZUGxXdI-JAwkDStNiHjIyMa9Gm_-TA
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +26,7 @@ class App extends Component {
     fetch(FETCH_URL, {
     method: 'GET',
     headers: new Headers({
-    'Authorization': 'Bearer BQCw22HzJlIaG_xdSKOZFRVTj-kYKqGwE_wOFvE1kyYcLPvRI50JRiwX_gS-ps156RJ4VP_1fQmoi65Ot90y7Rbwr6HV1Uo61_2a_EJgh5S6O4GQRZUGxXdI-JAwkDStNiHjIyMa9Gm_-TA'
+    'Authorization': 'Bearer BQA6b1xn3jQ_G_ff5eFIhKTZUNiJKg0sQYtKw-BeZGij9J5l6qDYyYe28h42F2WNCE0RvuS7hbJjElL3TCBahfPu7Fpe9i1aUjePqihHMO74-syjjnpxrz1Jggg1E7hAuOtkDqq1Kj8zeTY'
     }),
     })
     .then(response => response.json())
