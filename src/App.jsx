@@ -57,12 +57,19 @@ class App extends Component {
             </InputGroup.Append>
           </InputGroup>
         </FormGroup>
-        <Profile
-          artist={this.state.artist}
-        />
-        <div className="Gallery">
-          Gallery
-        </div>
+        {
+          this.state.artist !== null
+          ?
+            <div>
+              <Profile
+              artist={this.state.artist}
+              />
+              <div className="Gallery">
+                Gallery
+              </div>
+            </div>
+          : <div></div>
+        }
       </div>
     )
   }
