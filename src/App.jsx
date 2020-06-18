@@ -9,15 +9,17 @@ class App extends Component {
     super(props);
     this.state = {
       query: '',
-      artist: null
+      artist: null,
+      tracks: []
     }
   }
 
   search() {
     console.log('this.state', this.state);
     const BASE_URL = 'https://api.spotify.com/v1/search?';
-    const FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;
-    console.log('FETCH_URL', FETCH_URL);
+    let FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;
+    const ALBUM_URL = 'https://api.spotify.com/v1/artists/';
+
     fetch(FETCH_URL, {
     method: 'GET',
     headers: new Headers({
@@ -29,6 +31,20 @@ class App extends Component {
       const artist = json.artists.items[0];
       console.log('artist', artist);
       this.setState({artist});
+
+      FETCH_URL = `${ALBUM_URL}${artist.id}/top-tracks?country=MY&`
+      fetch(FETCH_URL, {
+        method: 'GET',
+        headers: new Headers({
+        'Authorization': 'Bearer BQCi-TDmepD8L32oZD6PX9l_ClvsQDiGFyQUY0yiNAPc5ioDwAgae8JdeyRdxX1zb47dABRgIKtOloQvFvl7O1laOvKr2GSBfnZ0mGn0o8P4xPmr7YnBFe35jFLUBC7Q2Ab5DeVFAwEgArc'
+      }),
+      })
+      .then(response => response.json())
+      .then(json => {
+        console.log('artist\'s top tracks:', json);
+        const { tracks } = json;
+        this.setState({tracks});
+      })
     })
     .catch(error => console.log('error', error))
   }
